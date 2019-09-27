@@ -1,27 +1,33 @@
 package app.entities;
 
 public class Person extends Cube {
-        String name;
-        int victoriesCount;
 
-        protected int howMuchVictories() {
-            return victoriesCount;
-        }
+    private String name;
+    private int victoriesCount;
 
-        public String getName() {
-            return name;
-        }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return "Person{" +
-                    "name='" + name + '\'' +
-                    ", victoriesCount=" + victoriesCount +
-                    '}';
-        }
+    public Person(String name) {
+        this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVictoriesCount() {
+        return victoriesCount;
+    }
+
+    public void setVictoriesCount(int victoriesCount) {
+        this.victoriesCount = victoriesCount;
+    }
+
+    public Person createRandomPerson() {
+        return new Person("Компьютер");
+    }
+}
 

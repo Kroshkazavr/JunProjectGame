@@ -12,15 +12,13 @@
 </head>
 <body>
 <!-- header -->
-<div>
-    <h1>JUST ADD YOUR NAME</h1>
-</div>
 
-<div>       <!-- content -->
-    <div>    <!-- buttons holder -->
-        <button onclick="location.href='/account'">ТУТ ПОЛЕ ДЛЯ ВВОДА ИМЕНИ</button>
+<form method="post" action="/account">
+    <label>ВВЕДИТЕ ВАШЕ ИМЯ:
+        <input type="text" name="name"><br />
+    </label>
+    <button type="submit">ОК</button>
+</form>
 
-    </div>
-</div>
 </body>
 </html>
