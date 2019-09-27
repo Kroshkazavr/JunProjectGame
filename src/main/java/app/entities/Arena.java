@@ -3,58 +3,52 @@ package app.entities;
 import java.util.Scanner;
 
 public class Arena {
-    public static void main(String[] args) {
-        Person player1 = new Person();
-        Person player2 = new Person();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите имя первого игрока ");
-        player1.setName(scanner.nextLine());
-        System.out.println("Введите имя второго игрока");
-        player2.setName(scanner.nextLine());
-        System.out.println("Для начала игры нажмите Enter");
-        System.out.println("Для выхода из игры введите Exit");
 
-        while (true) {          // в этом цикле происходит проверка на выход из игры. Для выхода необходимо ввести Exit
-            boolean Exit = false;
-            String tmp = scanner.nextLine();
-            if ("Exit".equals(tmp)) {
-                Exit = true;
-                break;
-            }
-            if ("".equals(tmp)) {
-                while (player1.victoriesCount < 3 || player2.victoriesCount < 3) {
-                    if (player1.victoriesCount == 3 || player2.victoriesCount == 3) {
-                        System.out.println("ПОБЕДА !!!");
-                        System.out.println("Результаты игроков ");
-                        System.out.print(player1.toString() + " : " + player2.toString());
-                        System.out.println("");
-                        try {              // в этом блоке закрываем scanner, выходим из цикла, оборабатываем исключение
-                            scanner.close();
-                            break;
-                        } catch (IllegalStateException Ex) {
-                            Ex.printStackTrace();
-                        }
-                    }
-                    System.out.println("В БОЙ !!!");
-                    System.out.println("Нажми Enter");
-                    player1.createRandomNumber(scanner.nextLine()); // вызываем метод имитирующий бросание куба от игрока player1
-                    System.out.println(player1.value);
-                    player2.createRandomNumber(scanner.nextLine()); // вызываем метод имитирующий бросание куба от игрока player2
-                    System.out.println(player2.value);
+    private Person player1;
+    private Person player2;
 
-                    if (player1.value < player2.value) {
-                        player2.victoriesCount++;
-                        System.out.println("Выиграл игрок " + player2);
-                    }
-                    if (player2.value < player1.value) {
-                        player1.victoriesCount++;
-                        System.out.println("Выиграл игрок " + player1);
-                    }
-                    if (player1.value == player2.value) {      //  в случае если зачение value игроков равны, снова идём по циклу
-                        System.out.println("Ничья. Кидаем снова! ");
-                    }
-                }
-            }
-        }
+    public Arena(Person player1, Person player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
+
+    public void makeButtle() {
+        Cube cube = new Cube();
+        while (player1.getVictoriesCount() != 3 || player2.getVictoriesCount() != 3) {
+            spotTheWinner(cube);
+        }
+        System.out.println("Битва закончена со счетом " + player1.getVictoriesCount() + ":" + player2.getVictoriesCount());
+        if (player1.getVictoriesCount() == 3) {
+            System.out.println("В этой битве победил " + player1.getName() + "!");
+        } else {
+            System.out.println("В этой битве победил " + player2.getName() + "!");
+        }
+        clearPersonVictories();
+    }
+    //todo здесь должна быть привязка к кнопке "бросить кубик"
+
+    private void spotTheWinner(Cube cube) {
+        int numberPlayer1 = cube.createRandomNumber();
+        int numberPlayer2 = cube.createRandomNumber();
+
+        System.out.println("У " + player1.getName() + " выпало " + numberPlayer1 + ", у " + player2.getName() +
+                " выпало " + numberPlayer2);
+        if (numberPlayer1 > numberPlayer2) {
+            player1.setVictoriesCount(player1.getVictoriesCount() + 1);
+            System.out.println("В этом раунде победил " + player1.getName() + "!");
+        }
+        if (numberPlayer1 < numberPlayer2) {
+            player2.setVictoriesCount(player2.getVictoriesCount() + 1);
+            System.out.println("В этом раунде победил " + player2.getName() + "!");
+        } else {
+            System.out.println("Ничья! Бросаем кубик снова.");
+        }
+
+    }
+
+    private void clearPersonVictories() {
+        player1.setVictoriesCount(0);
+        player2.setVictoriesCount(0);
+    }
+
 }
