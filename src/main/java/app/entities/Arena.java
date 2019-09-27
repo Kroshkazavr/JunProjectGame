@@ -25,7 +25,7 @@ public class Arena {
         }
         clearPersonVictories();
     }
-    //todo здесь должна быть привязка к кнопке "бросить кубик"
+
 
     private void spotTheWinner(Cube cube) {
         int numberPlayer1 = cube.createRandomNumber();
@@ -50,5 +50,4 @@ public class Arena {
         player1.setVictoriesCount(0);
         player2.setVictoriesCount(0);
     }
-
 }
