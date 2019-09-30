@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Arena {
 
-    private Person player1;
-    private Person player2;
+    private final Person player1;
+    private final Person player2;
+    private static final int WINS_TO_END_GAME = 3;
 
     public Arena(Person player1, Person player2) {
         this.player1 = player1;
@@ -14,10 +15,10 @@ public class Arena {
 
     public void makeButtle() {
         Cube cube = new Cube();
-        while (player1.getVictoriesCount() != 3 || player2.getVictoriesCount() != 3) {
+        if (player1.getVictoriesCount() < WINS_TO_END_GAME && player2.getVictoriesCount() < WINS_TO_END_GAME) {
             spotTheWinner(cube);
-        }
-        System.out.println("Битва закончена со счетом " + player1.getVictoriesCount() + ":" + player2.getVictoriesCount());
+        } else {
+        System.out.println("Битва закончена со счетом " + player1.getVictoriesCount() + ":" + player2.getVictoriesCount());}
         if (player1.getVictoriesCount() == 3) {
             System.out.println("В этой битве победил " + player1.getName() + "!");
         } else {
