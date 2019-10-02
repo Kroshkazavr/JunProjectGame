@@ -3,6 +3,7 @@ package app.servlets;
 import Model.Model;
 import app.entities.Person;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,5 +18,7 @@ public class Account extends HttpServlet {
         Person person = new Person(name);
         Model.getInstance().addPlayer1(person);
 
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/account.jsp");
+        requestDispatcher.forward(req, resp);
     }
 }
