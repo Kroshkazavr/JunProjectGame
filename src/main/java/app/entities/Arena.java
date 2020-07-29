@@ -1,7 +1,5 @@
 package app.entities;
 
-import java.util.Scanner;
-
 public class Arena {
 
     private static final int WINS_TO_END_GAME = 3;
@@ -18,12 +16,12 @@ public class Arena {
         if (player1.getVictoriesCount() < WINS_TO_END_GAME && player2.getVictoriesCount() < WINS_TO_END_GAME) {
             spotTheWinner(cube);
         } else {
-            System.out.println("Битва закончена со счетом " + player1.getVictoriesCount() + ":" + player2.getVictoriesCount());
+            System.out.println("The battle is over with a score " + player1.getVictoriesCount() + ":" + player2.getVictoriesCount());
         }
         if (player1.getVictoriesCount() == 3) {
-            System.out.println("В этой битве победил " + player1.getName() + "!");
+            System.out.println("In this battle won " + player1.getName() + "!");
         } else {
-            System.out.println("В этой битве победил " + player2.getName() + "!");
+            System.out.println("In this battle won " + player2.getName() + "!");
         }
         clearPersonVictories();
     }
@@ -33,17 +31,17 @@ public class Arena {
         int numberPlayer1 = cube.createRandomNumber();
         int numberPlayer2 = cube.createRandomNumber();
 
-        System.out.println("У " + player1.getName() + " выпало " + numberPlayer1 + ", у " + player2.getName() +
-                " выпало " + numberPlayer2);
+        System.out.println(player1.getName() + " got " + numberPlayer1 + " points, " + player2.getName() +
+                " got " + numberPlayer2 + " points.");
         if (numberPlayer1 > numberPlayer2) {
             player1.setVictoriesCount(player1.getVictoriesCount() + 1);
-            System.out.println("В этом раунде победил " + player1.getName() + "!");
+            System.out.println("In this round won " + player1.getName() + "!");
         }
         if (numberPlayer1 < numberPlayer2) {
             player2.setVictoriesCount(player2.getVictoriesCount() + 1);
-            System.out.println("В этом раунде победил " + player2.getName() + "!");
+            System.out.println("In this round won " + player2.getName() + "!");
         } else {
-            System.out.println("Ничья! Бросаем кубик снова.");
+            System.out.println("Draw! Needs to roll the die again.");
         }
 
     }

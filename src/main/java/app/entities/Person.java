@@ -27,7 +27,7 @@ public class Person extends Cube {
     }
 
     public Person createRandomPerson() {
-        return new Person("Компьютер");
+        return new Person("Computer");
     }
 }
 

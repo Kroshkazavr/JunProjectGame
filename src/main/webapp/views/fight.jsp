@@ -5,7 +5,7 @@
   Time: 10:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>JSP FOR ARENA</title>
@@ -13,12 +13,12 @@
 <body>
 <!-- header -->
 <div>
-    <h1>ИНФОРМАЦИЯ О БОЕ</h1>
+    <h1>The battle information</h1>
 </div>
 
 <div>       <!-- content -->
     <div>    <!-- buttons holder -->
-        <button onclick=>ТУТ КНОПКА КИНУТЬ КУБИК</button>
+        <button onclick=>This is a button "Roll The Dice"</button>
 
     </div>
 </div>

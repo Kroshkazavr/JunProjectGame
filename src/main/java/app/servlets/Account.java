@@ -1,6 +1,6 @@
 package app.servlets;
 
-import Model.Model;
+import model.Model;
 import app.entities.Person;
 
 import javax.servlet.RequestDispatcher;
